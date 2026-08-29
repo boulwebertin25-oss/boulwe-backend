@@ -1,23 +1,23 @@
 """
-Génération d'embeddings via Voyage AI (utilisés pour l'indexation et la recherche).
+Génération d'embeddings via Gemini (utilisé pour la recherche RAG).
 """
 
 import os
-import voyageai
+import google.generativeai as genai
 
-VOYAGE_API_KEY = os.getenv("VOYAGE_API_KEY")
-EMBEDDING_MODEL = "voyage-3"
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+EMBEDDING_MODEL = "models/text-embedding-004"
 
-vo = voyageai.Client(api_key=VOYAGE_API_KEY)
+genai.configure(api_key=GEMINI_API_KEY)
 
 
 def embed_documents(texts: list[str]) -> list[list[float]]:
-    """Génère les embeddings pour une liste de chunks à indexer."""
-    result = vo.embed(texts, model=EMBEDDING_MODEL, input_type="document")
-    return result.embeddings
+    """Génère les embeddings pour une liste de textes."""
+    result = genai.embed_content(model=EMBEDDING_MODEL, content=texts)
+    return result["embedding"]
 
 
 def embed_query(text: str) -> list[float]:
-    """Génère l'embedding d'une question posée par l'utilisateur."""
-    result = vo.embed([text], model=EMBEDDING_MODEL, input_type="query")
-    return result.embeddings[0]
+    """Génère l'embedding d'une question."""
+    result = genai.embed_content(model=EMBEDDING_MODEL, content=text)
+    return result["embedding"]
