@@ -5,14 +5,14 @@ Lancer en local avec :
     uvicorn main:app --reload
 """
 
-from from fastapi import FastAPI, UploadFile, File
+from fastapi import FastAPI, UploadFile, File
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
 
 from ingestion import ingest_document
 from rag import answer_question
 from models import IngestResponse, AskRequest, AskResponse
-from 
+
 
 load_dotenv()  # charge les clés API depuis .env
 
