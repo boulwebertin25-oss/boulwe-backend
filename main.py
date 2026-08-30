@@ -5,7 +5,7 @@ Lancer en local avec :
     uvicorn main:app --reload
 """
 
-from fastapi import FastAPI, UploadFile, File,form
+from fastapi import FastAPI, UploadFile, File, Form
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
 
