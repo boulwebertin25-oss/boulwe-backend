@@ -1,9 +1,4 @@
-"""
-Point d'entrée de l'API boulwe-backend.
-
-Lancer en local avec :
-    uvicorn main:app --reload
-"""
+""" Point d'entrée de l'API boulwe-backend. Lancer en local avec : uvicorn main:app --reload """
 
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 from dotenv import load_dotenv
@@ -27,10 +22,7 @@ def root():
 
 
 @app.post("/ingest", response_model=IngestResponse)
-async def ingest(
-    file: UploadFile = File(...),
-    collection: str = Form(default="general"),
-):
+async def ingest( file: UploadFile = File(...), collection: str = Form(default="general"), ):
     """Indexe un document (PDF ou texte) dans une collection Qdrant."""
     if not file.filename:
         raise HTTPException(status_code=400, detail="Nom de fichier manquant.")
