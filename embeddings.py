@@ -6,7 +6,7 @@ import os
 import google.generativeai as genai
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-EMBEDDING_MODEL = "models/text-embedding-004"
+EMBEDDING_MODEL = "models/gemini-embedding-001"
 
 genai.configure(api_key=GEMINI_API_KEY)
 
