@@ -6,9 +6,9 @@ avec Gemini, en forçant l'ancrage sur les sources fournies.
 import os
 import google.generativeai as genai
 
-from app.embeddings import embed_query
-from app.vectorstore import search_chunks
-from app.models import SourceChunk
+from embeddings import embed_query
+from vectorstore import search_chunks
+from models import SourceChunk
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 GEMINI_MODEL = "gemini-1.5-flash"
