@@ -9,8 +9,8 @@ from openpyxl import load_workbook
 from pptx import Presentation
 from io import BytesIO
 
-from app.embeddings import embed_documents
-from app.vectorstore import upsert_chunks
+from embeddings import embed_documents
+from vectorstore import upsert_chunks
 
 CHUNK_SIZE = 800      # caractères par chunk (approximation simple, pas de tokenizer ici)
 CHUNK_OVERLAP = 150   # chevauchement pour ne pas couper une idée en deux
