@@ -1,9 +1,9 @@
 """ Point d'entrée de l'API boulwe-backend. Lancer en local avec : uvicorn main:app --reload """
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 from dotenv import load_dotenv
-from app.ingestion import ingest_document
-from app.rag import answer_question
-from app.models import IngestResponse, AskRequest, AskResponse
+from ingestion import ingest_document
+from rag import answer_question
+from models import IngestResponse, AskRequest, AskResponse
 load_dotenv()  # charge les clés API depuis le fichier .env
 app = FastAPI(
     title="Boulwe Backend",
